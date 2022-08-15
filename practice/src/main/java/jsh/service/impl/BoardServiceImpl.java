@@ -5,46 +5,39 @@ import java.util.List;
 import jsh.domain.Board;
 import jsh.mapper.BoardMapper;
 import jsh.service.BoardService;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+
+@RequiredArgsConstructor
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	private BoardMapper boardmapper;
+	private final BoardMapper mapper;
 
 	@Override
 	public void register(Board board) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mapper.create(board);
 	}
 
 	@Override
 	public Board read(Integer boardNo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.read(boardNo);
 	}
 
 	@Override
 	public void modify(Board board) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mapper.update(board);
 	}
 
 	@Override
 	public void remove(Integer boardNo) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mapper.delete(boardNo);
 	}
 
 	@Override
 	public List<Board> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.list();
 	}
-
-
 
 }
