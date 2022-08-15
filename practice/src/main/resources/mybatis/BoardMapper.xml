@@ -4,6 +4,11 @@
 <mapper namespace="jsh.mapper.BoardMapper">
 
 <insert id="create">
+<selectKey keyProperty="userNo" resultType="int" order="BEFORE">  
+	SELECT NEXTVAL('seq_member') 
+	FROM dual       
+</selectKey>
+<!-- A.I 시퀀스가 있는 경우 selectKey를 이용하여 DB에서 정보를 미리 가져온뒤 INSERT 한다 -->
 	INSERT INTO board 
 		 ( 
 		   board_no,
